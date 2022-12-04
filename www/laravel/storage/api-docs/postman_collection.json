@@ -1,0 +1,768 @@
+{
+	"info": {
+		"_postman_id": "c490f50b-edb6-4d59-9f9b-1a975ae48984",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/v1",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "Регистрация",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"full_name\": \"name\",\n  \"email\": \"email@mail.com\",\n  \"password\": \"p@ssw0rd\",\n  \"password_confirmation\": \"p@ssw0rd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"full_name\": \"name\",\n  \"email\": \"email@mail.com\",\n  \"password\": \"p@ssw0rd\",\n  \"password_confirmation\": \"p@ssw0rd\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/signup",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"signup"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Ошибка валидации",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"full_name\": \"name\",\n  \"email\": \"email@mail.com\",\n  \"password\": \"p@ssw0rd\",\n  \"password_confirmation\": \"p@ssw0rd\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/signup",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"signup"
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"field\": \"field\",\n    \"message\": \"VALIDATION_EXCEPTION\",\n    \"description\": \"Человеко-понятное описание\"\n  },\n  {\n    \"field\": \"field\",\n    \"message\": \"VALIDATION_EXCEPTION\",\n    \"description\": \"Человеко-понятное описание\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Вход",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"username@mail.ru\",\n  \"password\": \"p@ssw0rd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/auth/signin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Успех",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"username@mail.ru\",\n  \"password\": \"p@ssw0rd\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/signin",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"signin"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"user\": {\n    \"id\": 1,\n    \"full_name\": \"name\",\n    \"email\": \"email@mail.com\",\n    \"status\": \"active\"\n  },\n  \"token\": {\n    \"token_type\": \"Bearer\",\n    \"expires_in\": -13640080,\n    \"access_token\": \"Большой и длинный токен\",\n    \"refresh_token\": \"Большой и длинный токен\"\n  }\n}"
+								},
+								{
+									"name": "Ошибка валидации",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"username@mail.ru\",\n  \"password\": \"p@ssw0rd\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/auth/signin",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"signin"
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"field\": \"field\",\n    \"message\": \"VALIDATION_EXCEPTION\",\n    \"description\": \"Человеко-понятное описание\"\n  },\n  {\n    \"field\": \"field\",\n    \"message\": \"VALIDATION_EXCEPTION\",\n    \"description\": \"Человеко-понятное описание\"\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "profile",
+					"item": [
+						{
+							"name": "Получить пользователя",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/profile/show?id=42672844",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"profile",
+										"show"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "42672844",
+											"description": "(Required) ID пользователя"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Успех",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profile/show?id=42672844",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profile",
+												"show"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "42672844"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": 1,\n  \"full_name\": \"name\",\n  \"email\": \"email@mail.com\",\n  \"status\": \"active\"\n}"
+								},
+								{
+									"name": "Ошибка авторизации",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profile/show?id=42672844",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profile",
+												"show"
+											],
+											"query": [
+												{
+													"key": "id",
+													"value": "42672844"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"message\": \"AUTHORIZATION_EXCEPTION\",\n    \"description\": \"Unauthenticated.\"\n  },\n  {\n    \"message\": \"AUTHORIZATION_EXCEPTION\",\n    \"description\": \"Unauthenticated.\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Обновить свой профиль",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"full_name\": \"Иван\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/profile/update",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"profile",
+										"update"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Успех",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"full_name\": \"Иван\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profile/update",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profile",
+												"update"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": 1,\n  \"full_name\": \"name\",\n  \"email\": \"email@mail.com\",\n  \"status\": \"active\"\n}"
+								},
+								{
+									"name": "Ошибка авторизации",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"full_name\": \"Иван\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profile/update",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profile",
+												"update"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"message\": \"AUTHORIZATION_EXCEPTION\",\n    \"description\": \"Unauthenticated.\"\n  },\n  {\n    \"message\": \"AUTHORIZATION_EXCEPTION\",\n    \"description\": \"Unauthenticated.\"\n  }\n]"
+								},
+								{
+									"name": "Ошибка валидации",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"full_name\": \"Иван\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profile/update",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profile",
+												"update"
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"field\": \"field\",\n    \"message\": \"VALIDATION_EXCEPTION\",\n    \"description\": \"Человеко-понятное описание\"\n  },\n  {\n    \"field\": \"field\",\n    \"message\": \"VALIDATION_EXCEPTION\",\n    \"description\": \"Человеко-понятное описание\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Обновить пароль",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"old_password\": \"old_password\",\n  \"new_password\": \"new_password\",\n  \"new_password_confirmation\": \"new_password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/profile/change_password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"profile",
+										"change_password"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Успех",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"old_password\": \"old_password\",\n  \"new_password\": \"new_password\",\n  \"new_password_confirmation\": \"new_password\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profile/change_password",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profile",
+												"change_password"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Ошибка авторизации",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"old_password\": \"old_password\",\n  \"new_password\": \"new_password\",\n  \"new_password_confirmation\": \"new_password\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profile/change_password",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profile",
+												"change_password"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"message\": \"AUTHORIZATION_EXCEPTION\",\n    \"description\": \"Unauthenticated.\"\n  },\n  {\n    \"message\": \"AUTHORIZATION_EXCEPTION\",\n    \"description\": \"Unauthenticated.\"\n  }\n]"
+								},
+								{
+									"name": "Ошибка валидации",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"old_password\": \"old_password\",\n  \"new_password\": \"new_password\",\n  \"new_password_confirmation\": \"new_password\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profile/change_password",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profile",
+												"change_password"
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"field\": \"field\",\n    \"message\": \"VALIDATION_EXCEPTION\",\n    \"description\": \"Человеко-понятное описание\"\n  },\n  {\n    \"field\": \"field\",\n    \"message\": \"VALIDATION_EXCEPTION\",\n    \"description\": \"Человеко-понятное описание\"\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Удалить свой профиль",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/profile/delete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"profile",
+										"delete"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Успех",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profile/delete",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profile",
+												"delete"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Ошибка авторизации",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/profile/delete",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"profile",
+												"delete"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"message\": \"AUTHORIZATION_EXCEPTION\",\n    \"description\": \"Unauthenticated.\"\n  },\n  {\n    \"message\": \"AUTHORIZATION_EXCEPTION\",\n    \"description\": \"Unauthenticated.\"\n  }\n]"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}
